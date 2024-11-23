@@ -247,6 +247,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="x3m-BZ-5t4"/>
+                    <connections>
+                        <outlet property="cityLabel" destination="wIQ-TX-koW" id="PZf-Zz-rUO"/>
+                        <outlet property="emailLabel" destination="Jeg-N1-BRd" id="eiI-NR-VAG"/>
+                        <outlet property="phoneNumberLabel" destination="aZ9-hb-rta" id="2zB-bF-O0Z"/>
+                        <outlet property="stateLabel" destination="24a-K0-Nby" id="cYS-sg-B3v"/>
+                        <outlet property="streetLabel" destination="q4d-oR-a2i" id="wcu-i3-TkC"/>
+                        <outlet property="zipCodeLabel" destination="ryQ-8T-6se" id="W4w-34-jW4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQC-vi-Zal" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

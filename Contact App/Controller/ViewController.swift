@@ -11,6 +11,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var contacts: [Contact] = []
+    var gidenContact: Contact!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,16 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue" {
+            if let hedefVC = segue.destination as? DetailTableViewController {
+                if let secilenContact = sender as? Contact {
+                    hedefVC.gelenContact = secilenContact
+                }
+            }
+        }
+    }
 }
 
 extension ViewController : UITableViewDelegate , UITableViewDataSource {
@@ -45,15 +56,11 @@ extension ViewController : UITableViewDelegate , UITableViewDataSource {
         return contacts.count
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
-    }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let contact = contacts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
-        cell.imageView?.layer.cornerRadius = 50
+       
         var content = cell.defaultContentConfiguration()
        
         // Configure content.
@@ -67,7 +74,8 @@ extension ViewController : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "detailSegue", sender: self)
+        gidenContact = contacts[indexPath.row]
+        performSegue(withIdentifier: "detailSegue", sender: gidenContact)
     }
 }
 
