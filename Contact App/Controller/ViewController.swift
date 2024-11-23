@@ -46,7 +46,7 @@ extension ViewController : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 80
     }
     
     
@@ -56,19 +56,18 @@ extension ViewController : UITableViewDelegate , UITableViewDataSource {
         cell.imageView?.layer.cornerRadius = 50
         var content = cell.defaultContentConfiguration()
        
-
         // Configure content.
         content.image = UIImage(named: contact.avatarName)
         content.text = "\(contact.firstName) \(contact.lastName)"
-       
-
         // Customize appearance.
         content.imageProperties.tintColor = .purple
-
-
         cell.contentConfiguration = content
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detailSegue", sender: self)
     }
 }
 
