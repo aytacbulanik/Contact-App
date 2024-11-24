@@ -11,6 +11,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var contacts: [Contact] = []
+    var uniqueFirstArray : [String] = []
+    var sectionedArray = [[Contact]]()
     var gidenContact: Contact!
     
     override func viewDidLoad() {
@@ -18,23 +20,25 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         decodePlist()
-       
     }
 
     func decodePlist() {
-        DispatchQueue.main.async {
+       
             if let filePath = Bundle.main.url(forResource: "ContactsDB", withExtension: ".plist") {
                 if let contactData = try? Data(contentsOf: filePath){
                     let plistdecoder = PropertyListDecoder()
                     do {
                         self.contacts = try plistdecoder.decode([Contact].self, from: contactData)
+                        self.contacts = self.contacts.sorted(by: { $0.firstName < $1.firstName })
+                        self.uniqueFirstArray = Contact.getUniqueFirstLetter(from: self.contacts)
+                        self.sectionedArray = Contact.getSectionedArray(from: self.contacts, uniqueLetter: self.uniqueFirstArray)
                         self.tableView.reloadData()
                     } catch {
                         print(error.localizedDescription)
                     }
                 }
             }
-        }
+        
         
     }
     

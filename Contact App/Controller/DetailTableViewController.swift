@@ -16,6 +16,8 @@ class DetailTableViewController: UITableViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var streetLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
     
     var gelenContact : Contact?
     
@@ -33,6 +35,8 @@ class DetailTableViewController: UITableViewController {
         cityLabel.text = contact.city
         streetLabel.text = contact.streetAddress
         emailLabel.text = contact.email
+        avatarImageView.image = UIImage(named: contact.avatarName)
+        nameLabel.text = "\(contact.firstName) \(contact.lastName)"
     }
 
    
