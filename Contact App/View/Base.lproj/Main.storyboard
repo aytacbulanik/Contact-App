@@ -16,26 +16,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RtW-As-K8w">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RtW-As-K8w">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contactCell" textLabel="cgS-Hk-wkw" style="IBUITableViewCellStyleDefault" id="HkE-bs-1FS">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contactCell" id="HkE-bs-1FS" customClass="ContactTableViewCell" customModule="Contact_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HkE-bs-1FS" id="eUo-eX-8mT">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cgS-Hk-wkw">
-                                                    <rect key="frame" x="20" y="0.0" width="353" height="43.666667938232422"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ueN-lA-1NA">
+                                                    <rect key="frame" x="20" y="10" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="1Xv-mP-oKb"/>
+                                                        <constraint firstAttribute="width" constant="60" id="80p-xY-dH4"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8v-4m-TwM">
+                                                    <rect key="frame" x="90" y="28" width="48" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BVu-MA-rd1">
+                                                    <rect key="frame" x="333" y="24.666666666666668" width="30" height="29.666666666666661"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="QVu-U2-b0H"/>
+                                                        <constraint firstAttribute="width" constant="30" id="f3n-85-SAJ"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ueN-lA-1NA" firstAttribute="leading" secondItem="eUo-eX-8mT" secondAttribute="leadingMargin" id="3ug-qi-ngM"/>
+                                                <constraint firstItem="ueN-lA-1NA" firstAttribute="centerY" secondItem="eUo-eX-8mT" secondAttribute="centerY" id="BSb-P9-dpN"/>
+                                                <constraint firstItem="T8v-4m-TwM" firstAttribute="leading" secondItem="ueN-lA-1NA" secondAttribute="trailing" constant="10" id="O6p-Nq-QEU"/>
+                                                <constraint firstItem="BVu-MA-rd1" firstAttribute="centerY" secondItem="eUo-eX-8mT" secondAttribute="centerY" id="gXu-qq-N8q"/>
+                                                <constraint firstItem="T8v-4m-TwM" firstAttribute="centerY" secondItem="eUo-eX-8mT" secondAttribute="centerY" id="q9y-pf-PAn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="BVu-MA-rd1" secondAttribute="trailing" constant="10" id="ty8-WC-HV9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarImage" destination="ueN-lA-1NA" id="Dic-zT-guX"/>
+                                            <outlet property="favoriteImageView" destination="BVu-MA-rd1" id="GQy-Y5-O7Z"/>
+                                            <outlet property="nameLabel" destination="T8v-4m-TwM" id="3sm-Hf-qWA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -289,7 +315,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQC-vi-Zal" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1780.916030534351" y="11.971830985915494"/>
+            <point key="canvasLocation" x="1844" y="4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="N9w-ii-6BE">
@@ -311,6 +337,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

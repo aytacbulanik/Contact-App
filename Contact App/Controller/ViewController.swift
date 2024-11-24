@@ -72,18 +72,16 @@ extension ViewController : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let contact = sectionedArray[indexPath.section][indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as? ContactTableViewCell {
+            cell.satirAyarla(contact: contact)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
        
-        var content = cell.defaultContentConfiguration()
-       
-        // Configure content.
-        content.image = UIImage(named: contact.avatarName)
-        content.text = "\(contact.firstName) \(contact.lastName)"
-        // Customize appearance.
-        content.imageProperties.tintColor = .purple
-        cell.contentConfiguration = content
+        
 
-        return cell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
