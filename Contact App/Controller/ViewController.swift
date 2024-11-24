@@ -55,14 +55,23 @@ class ViewController: UIViewController {
 
 extension ViewController : UITableViewDelegate , UITableViewDataSource {
     
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return uniqueFirstArray.count
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts.count
+        return sectionedArray[section].count
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return uniqueFirstArray[section]
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return uniqueFirstArray
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let contact = contacts[indexPath.row]
+        let contact = sectionedArray[indexPath.section][indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
        
         var content = cell.defaultContentConfiguration()
@@ -78,7 +87,7 @@ extension ViewController : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        gidenContact = contacts[indexPath.row]
+        gidenContact = sectionedArray[indexPath.section][indexPath.row]
         performSegue(withIdentifier: "detailSegue", sender: gidenContact)
     }
 }
