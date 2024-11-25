@@ -17,20 +17,8 @@ struct Contact : Codable {
     let state : String
     let zip : String
     let avatarName : String
-    let isFavorite : Bool?
+    var isFavorite : Bool
     
-    init(firstName: String, lastName: String, phoneNumber: String, email: String, streetAddress: String, city: String, state: String, zip: String, avatarName: String,isFavorite : Bool?) {
-        self.firstName = firstName
-        self.lastName = lastName
-        self.phoneNumber = phoneNumber
-        self.email = email
-        self.streetAddress = streetAddress
-        self.city = city
-        self.state = state
-        self.zip = zip
-        self.avatarName = avatarName
-        self.isFavorite = isFavorite
-    }
     
     var firstLetter : String {
         return firstName.prefix(1).uppercased()
@@ -69,5 +57,42 @@ extension Contact : Equatable {
         leftContact.streetAddress == rightContact.streetAddress &&
         leftContact.city == rightContact.city &&
         leftContact.state == rightContact.state
+    }
+}
+
+extension Contact {
+    struct Key {
+        static let firstName = "firstName"
+        static let lastName = "lastName"
+        static let phoneNumber = "phoneNumber"
+        static let email = "email"
+        static let street = "streetAddress"
+        static let state = "state"
+        static let city = "city"
+        static let zip = "zip"
+        static let avatarName = "avatarName"
+    }
+    init?(data : [String : String]) {
+        guard let firstNameData = data[Key.firstName] ,
+              let lastNameData = data[Key.lastName] ,
+              let phoneData = data[Key.phoneNumber] ,
+              let emailData = data[Key.email] ,
+              let streetData = data[Key.street] ,
+              let stateData = data[Key.state] ,
+              let cityData = data[Key.city] ,
+              let zipData = data[Key.zip],
+              let avatarData = data[Key.avatarName] else {
+            return nil
+        }
+        firstName = firstNameData
+        lastName = lastNameData
+        phoneNumber = phoneData
+        email = emailData
+        streetAddress = streetData
+        state = stateData
+        city = cityData
+        zip = zipData
+        avatarName = avatarData
+        isFavorite = false
     }
 }
