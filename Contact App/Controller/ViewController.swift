@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     var uniqueFirstArray : [String] = []
     var sectionedArray = [[Contact]]()
     var gidenContact: Contact!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -46,6 +45,7 @@ class ViewController: UIViewController {
         if segue.identifier == "detailSegue" {
             if let hedefVC = segue.destination as? DetailTableViewController {
                 if let secilenContact = sender as? Contact {
+                    hedefVC.delegate = self
                     hedefVC.gelenContact = secilenContact
                 }
             }
@@ -79,14 +79,19 @@ extension ViewController : UITableViewDelegate , UITableViewDataSource {
             return UITableViewCell()
         }
        
-        
-
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         gidenContact = sectionedArray[indexPath.section][indexPath.row]
         performSegue(withIdentifier: "detailSegue", sender: gidenContact)
     }
+}
+
+extension ViewController : ContactDetailDelegate {
+    func sendChosenContact(contact: Contact) {
+        print(contact.firstName)
+    }
+    
+    
 }
 

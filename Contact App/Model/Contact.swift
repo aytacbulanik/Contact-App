@@ -17,6 +17,20 @@ struct Contact : Codable {
     let state : String
     let zip : String
     let avatarName : String
+    let isFavorite : Bool?
+    
+    init(firstName: String, lastName: String, phoneNumber: String, email: String, streetAddress: String, city: String, state: String, zip: String, avatarName: String,isFavorite : Bool?) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.phoneNumber = phoneNumber
+        self.email = email
+        self.streetAddress = streetAddress
+        self.city = city
+        self.state = state
+        self.zip = zip
+        self.avatarName = avatarName
+        self.isFavorite = isFavorite
+    }
     
     var firstLetter : String {
         return firstName.prefix(1).uppercased()
@@ -43,5 +57,17 @@ struct Contact : Codable {
             }
         }
         return resultArray
+    }
+}
+
+extension Contact : Equatable {
+    static func == (leftContact : Contact , rightContact : Contact) -> Bool {
+         return leftContact.firstName == rightContact.firstName &&
+        leftContact.lastName == rightContact.lastName &&
+        leftContact.phoneNumber == rightContact.phoneNumber &&
+        leftContact.email == rightContact.email &&
+        leftContact.streetAddress == rightContact.streetAddress &&
+        leftContact.city == rightContact.city &&
+        leftContact.state == rightContact.state
     }
 }

@@ -122,6 +122,25 @@
                                 <constraint firstItem="sVr-BN-ix0" firstAttribute="centerX" secondItem="aq5-kb-vV9" secondAttribute="centerX" id="cWS-jY-FHp"/>
                             </constraints>
                         </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="hkX-mz-zgJ">
+                            <rect key="frame" x="0.0" y="618.00000762939453" width="393" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6D9-Fv-Y5X">
+                                    <rect key="frame" x="10" y="4.6666666666666679" width="210.33333333333334" height="35"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Mark as favorite Contact"/>
+                                    <connections>
+                                        <action selector="favoriteButtonPressed:" destination="A0b-Lb-kMt" eventType="touchUpInside" id="ZQv-u1-EdS"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="6D9-Fv-Y5X" firstAttribute="leading" secondItem="hkX-mz-zgJ" secondAttribute="leading" constant="10" id="OyQ-28-Xzh"/>
+                                <constraint firstItem="6D9-Fv-Y5X" firstAttribute="centerY" secondItem="hkX-mz-zgJ" secondAttribute="centerY" id="WDl-WT-xox"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="2q9-gB-kmh">
                                 <cells>
@@ -306,6 +325,7 @@
                         <outlet property="avatarImageView" destination="dWc-C3-SB9" id="009-Nf-sU5"/>
                         <outlet property="cityLabel" destination="wIQ-TX-koW" id="PZf-Zz-rUO"/>
                         <outlet property="emailLabel" destination="Jeg-N1-BRd" id="eiI-NR-VAG"/>
+                        <outlet property="markFavoriteButtonOut" destination="6D9-Fv-Y5X" id="37M-lF-tWf"/>
                         <outlet property="nameLabel" destination="sVr-BN-ix0" id="Jd9-py-h3L"/>
                         <outlet property="phoneNumberLabel" destination="aZ9-hb-rta" id="2zB-bF-O0Z"/>
                         <outlet property="stateLabel" destination="24a-K0-Nby" id="cYS-sg-B3v"/>

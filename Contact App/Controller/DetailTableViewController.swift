@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ContactDetailDelegate {
+    func sendChosenContact(contact: Contact)
+}
+
 class DetailTableViewController: UITableViewController {
 
     
@@ -18,26 +22,31 @@ class DetailTableViewController: UITableViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var markFavoriteButtonOut: UIButton!
     
     var gelenContact : Contact?
-    
+    var delegate : ContactDetailDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let gelenContact else { return }
-        showContact(contact: gelenContact)
+        showContact()
     }
 
     // MARK: - Table view data source
-    func showContact(contact : Contact) {
-        phoneNumberLabel.text = contact.phoneNumber
-        zipCodeLabel.text = contact.zip
-        stateLabel.text = contact.state
-        cityLabel.text = contact.city
-        streetLabel.text = contact.streetAddress
-        emailLabel.text = contact.email
-        avatarImageView.image = UIImage(named: contact.avatarName)
-        nameLabel.text = "\(contact.firstName) \(contact.lastName)"
+    func showContact() {
+        guard let gelenContact else { return }
+        phoneNumberLabel.text = gelenContact.phoneNumber
+        zipCodeLabel.text = gelenContact.zip
+        stateLabel.text = gelenContact.state
+        cityLabel.text = gelenContact.city
+        streetLabel.text = gelenContact.streetAddress
+        emailLabel.text = gelenContact.email
+        avatarImageView.image = UIImage(named: gelenContact.avatarName)
+        nameLabel.text = "\(gelenContact.firstName) \(gelenContact.lastName)"
     }
 
-   
+    @IBAction func favoriteButtonPressed(_ sender: UIButton) {
+       guard let gelenContact else { return }
+        delegate?.sendChosenContact(contact: gelenContact)
+    }
+    
 }

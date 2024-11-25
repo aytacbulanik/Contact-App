@@ -13,6 +13,7 @@ class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarImage: UIImageView!
     
+   
     var contact: Contact?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,5 +28,6 @@ class ContactTableViewCell: UITableViewCell {
         avatarImage.image = UIImage(named: contact.avatarName)
         favoriteImageView.isHidden = true
     }
+    
     
 }
