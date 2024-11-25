@@ -81,7 +81,7 @@ extension Contact {
               let stateData = data[Key.state] ,
               let cityData = data[Key.city] ,
               let zipData = data[Key.zip],
-              let avatarData = data[Key.avatarName] else {
+        let avatarData = data[Key.avatarName] else {
             return nil
         }
         firstName = firstNameData
@@ -94,5 +94,19 @@ extension Contact {
         zip = zipData
         avatarName = avatarData
         isFavorite = false
+    }
+}
+class PlistLoader {
+    static func plistLoaderArray() throws -> [[String : String]] {
+        guard let path = Bundle.main.path(forResource: "ContactsDB", ofType: "plist") else {fatalError()}
+        guard let data = NSArray(contentsOfFile: path) as? [[String : String]] else {fatalError()}
+        return data
+    }
+}
+
+class ContactSource {
+    static var contacts : [Contact] {
+        let data = try! PlistLoader.plistLoaderArray()
+        return data.compactMap {Contact(data: $0)}
     }
 }

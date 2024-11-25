@@ -18,7 +18,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        decodePlist()
+        contacts = ContactSource.contacts
+        print(contacts[0])
+        //decodePlist()
     }
 
     func decodePlist() {
@@ -37,8 +39,6 @@ class ViewController: UIViewController {
                     }
                 }
             }
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
