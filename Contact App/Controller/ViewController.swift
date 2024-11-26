@@ -37,7 +37,7 @@ class ViewController: UIViewController {
 extension ViewController : UITableViewDelegate , UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return uniqueFirstArray.count
+        return sectionedArray.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  sectionedArray[section].count

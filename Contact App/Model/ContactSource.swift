@@ -14,14 +14,14 @@ class ContactSource {
     }
     
     static var uniqueFirstLetter : [String] {
-        let firstLetters = contacts.map { $0.firstName }
+        let firstLetters = contacts.map { $0.firstLetter }
         let uniqueLetters = Set(firstLetters)
         return Array(uniqueLetters).sorted()
         }
     
         static var sectinedContacts : [[Contact]] {
-            return uniqueFirstLetter.map { firstName in
-                let filteredContacts = contacts.filter { $0.firstName == firstName }
+            return uniqueFirstLetter.map { firstLetter in
+                let filteredContacts = contacts.filter { $0.firstLetter == firstLetter }
                 return filteredContacts.sorted(by: {$0.firstName < $1.firstName})
             }
         }
