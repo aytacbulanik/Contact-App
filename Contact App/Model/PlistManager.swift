@@ -14,10 +14,9 @@ enum PlistError : Error {
     
 }
 
-
 class PlistManager {
     static func parsePlist(fileName : String ) throws -> [[String : String]] {
-        guard let path = Bundle.main.path(forResource: "ContactsDB", ofType: "plist") else { throw PlistError.invalidResources}
+        guard let path = Bundle.main.path(forResource: fileName, ofType: "plist") else { throw PlistError.invalidResources}
         guard let data = NSArray(contentsOfFile: path) as? [[String : String]] else {throw PlistError.parsingError}
         return data
     }
