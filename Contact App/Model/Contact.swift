@@ -98,9 +98,7 @@ extension Contact {
 }
 class PlistLoader {
     static func plistLoaderArray() throws -> [[String : String]] {
-        guard let path = Bundle.main.path(forResource: "ContactsDB", ofType: "plist") else {fatalError()}
-        guard let data = NSArray(contentsOfFile: path) as? [[String : String]] else {fatalError()}
-        return data
+        
     }
 }
 
