@@ -82,7 +82,7 @@ extension ViewController : ContactDetailDelegate {
         
         if let sectionadIndex = sectionadIndex, let contactIndex = contactIndex {
             print(sectionedArray[sectionadIndex][contactIndex].firstName)
-            sectionedArray[sectionadIndex][contactIndex].isFavorite = true
+            sectionedArray[sectionadIndex][contactIndex].isFavorite = contact.isFavorite
             tableView.reloadData()
         }
     }

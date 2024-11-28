@@ -42,11 +42,24 @@ class DetailTableViewController: UITableViewController {
         emailLabel.text = gelenContact.email
         avatarImageView.image = UIImage(named: gelenContact.avatarName)
         nameLabel.text = "\(gelenContact.firstName) \(gelenContact.lastName)"
+        if gelenContact.isFavorite {
+            markFavoriteButtonOut.setTitle("Remove from Favorites", for: .normal)
+        } else {
+            markFavoriteButtonOut.setTitle("Mark add to Favorites", for: .normal)
+        }
     }
 
     @IBAction func favoriteButtonPressed(_ sender: UIButton) {
        guard let gelenContact else { return }
-        delegate?.sendChosenContact(contact: gelenContact)
+        
+        self.gelenContact?.isFavorite = !gelenContact.isFavorite
+        
+        if (self.gelenContact?.isFavorite)! {
+            markFavoriteButtonOut.setTitle("Remove from Favorites", for: .normal)
+        } else {
+            markFavoriteButtonOut.setTitle("Mark add to Favorites", for: .normal)
+        }
+        delegate?.sendChosenContact(contact: self.gelenContact!)
     }
     
 }
