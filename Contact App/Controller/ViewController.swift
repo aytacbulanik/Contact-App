@@ -70,7 +70,21 @@ extension ViewController : UITableViewDelegate , UITableViewDataSource {
 
 extension ViewController : ContactDetailDelegate {
     func sendChosenContact(contact: Contact) {
-        print(contact.firstName)
+        var sectionadIndex : Int? = nil
+        var contactIndex : Int? = nil
+        for (index , contacts) in sectionedArray.enumerated() {
+            if let indexOfContacts = contacts.firstIndex(of: contact) {
+                sectionadIndex = index
+                contactIndex = indexOfContacts
+                break
+            }
+        }
+        
+        if let sectionadIndex = sectionadIndex, let contactIndex = contactIndex {
+            print(sectionedArray[sectionadIndex][contactIndex].firstName)
+            sectionedArray[sectionadIndex][contactIndex].isFavorite = true
+            tableView.reloadData()
+        }
     }
     
     

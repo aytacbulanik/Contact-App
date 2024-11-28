@@ -26,7 +26,12 @@ class ContactTableViewCell: UITableViewCell {
         self.contact = contact
         nameLabel.text = contact.firstName + " " + contact.lastName
         avatarImage.image = UIImage(named: contact.avatarName)
-        favoriteImageView.isHidden = true
+        if contact.isFavorite {
+            favoriteImageView.isHidden = false
+        }else {
+            favoriteImageView.isHidden = true
+        }
+        
     }
     
     
